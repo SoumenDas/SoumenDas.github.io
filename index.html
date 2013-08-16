@@ -1,53 +1,132 @@
-<!DOCTYPE html>
-<head><title>Javascript</title></head>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Object  by SoumenDas</title>
 
-<body>
-<h1 id="object-creation">Object Creation</h1>
-<h3 id="factory-pattern">Factory Pattern:</h3>
-<pre><code class="javascript">function a(){
-    var obj = {
-        b : &quot;Hi! &quot;,
-        c : &quot;Bye!&quot;
-    };
-    return obj;
-}
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Object </h1>
+        <p></p>
 
-var z = a();                             //i.e z = obj
-console.log(z.b, z.c);                   // Hi! Bye!
 
-z.constructor === Object;                // true
-z instanceof Object;                     // obvious: every object is instance of Object
+        <p class="view"><a href="https://github.com/SoumenDas">View My GitHub Profile</a></p>
 
-z.constructor === obj;
-//ReferenceError: 'obj' is undefined because its defined inside 'a'  
+      </header>
+      <section>
+        <h1>
+<a name="object-creation" class="anchor" href="#object-creation"><span class="octicon octicon-link"></span></a>Object Creation</h1>
 
-z instanceof obj;                         
-// ReferenceError: 'obj' is undefined because its defined inside 'a'
-//The problem now is we can't tell which specific object z belongs to.
-</code></pre>
+<h3>
+<a name="factory-pattern" class="anchor" href="#factory-pattern"><span class="octicon octicon-link"></span></a>Factory Pattern:</h3>
 
-<h3 id="disadvantage">Disadvantage:</h3>
-<p>It becomes difficult to query for the origin specific object. This can be overcomed by Constructor Pattern<br />
-</p>
-<h3 id="constructor-pattern">Constructor Pattern:</h3>
-<pre><code class="javascript">function A(){
-    this.b = &quot;Hi! &quot;;
-    this.c = &quot;Bye!&quot;;
-    this.show = function(){
-        console.log(z.b,z.c);
-    };
-};
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">a</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">b</span> <span class="o">:</span> <span class="s2">"Hi! "</span><span class="p">,</span>
+        <span class="nx">c</span> <span class="o">:</span> <span class="s2">"Bye!"</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="p">}</span>
 
-var z = new A();
-z.show();
-z instanceof A;           //true
-z instanceof Object;      //true
-A instanceof Object;      //true
+<span class="kd">var</span> <span class="nx">z</span> <span class="o">=</span> <span class="nx">a</span><span class="p">();</span>                             <span class="c1">//i.e z = obj</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">z</span><span class="p">.</span><span class="nx">b</span><span class="p">,</span> <span class="nx">z</span><span class="p">.</span><span class="nx">c</span><span class="p">);</span>                   <span class="c1">// Hi! Bye!</span>
 
-var x = new A();
-x.show();
-</code></pre>
+<span class="nx">z</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nb">Object</span><span class="p">;</span>                <span class="c1">// true</span>
+<span class="nx">z</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span>                    <span class="c1">// obvious: every object is instance of Object</span>
 
-<h3 id="disadvantage_1">Disadvantage:</h3>
-<p>Here z and x both have their own copy of show() method i.e. it is not shared hence takes up memory. This can be overcomed by Prototype Pattern.</p>
-</body>
+<span class="nx">z</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="c1">//ReferenceError: 'obj' is undefined because its defined inside 'a'  </span>
+
+<span class="nx">z</span> <span class="k">instanceof</span> <span class="nx">obj</span><span class="p">;</span>                         
+<span class="c1">// ReferenceError: 'obj' is undefined because its defined inside 'a'</span>
+<span class="c1">//The problem now is we can't tell which specific object z belongs to.</span>
+</pre></div>
+
+<h3>
+<a name="disadvantage" class="anchor" href="#disadvantage"><span class="octicon octicon-link"></span></a>Disadvantage:</h3>
+
+<p>It becomes difficult to query for the origin specific object. This can be overcomed by Constructor Pattern  </p>
+
+<h3>
+<a name="constructor-pattern" class="anchor" href="#constructor-pattern"><span class="octicon octicon-link"></span></a>Constructor Pattern:</h3>
+
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">A</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="s2">"Hi! "</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">c</span> <span class="o">=</span> <span class="s2">"Bye!"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">z</span><span class="p">.</span><span class="nx">b</span><span class="p">,</span><span class="nx">z</span><span class="p">.</span><span class="nx">c</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">z</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+<span class="nx">z</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="nx">z</span> <span class="k">instanceof</span> <span class="nx">A</span><span class="p">;</span>           <span class="c1">//true</span>
+<span class="nx">z</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span>      <span class="c1">//true</span>
+<span class="nx">A</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span>      <span class="c1">//true</span>
+
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+<span class="nx">x</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a name="disadvantage-1" class="anchor" href="#disadvantage-1"><span class="octicon octicon-link"></span></a>Disadvantage:</h3>
+
+<p>Here <strong>z</strong> and <strong>x</strong> both have their own copy of <strong>show()</strong> method as <strong><em>this</em></strong> is used i.e. it is not shared hence takes up memory. This can be overcomed by Prototype Pattern.</p>
+
+<h3>
+<a name="prototype-pattern" class="anchor" href="#prototype-pattern"><span class="octicon octicon-link"></span></a>Prototype Pattern:</h3>
+
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">A</span><span class="p">(){</span>
+<span class="p">}</span>
+<span class="nx">A</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="o">:</span> <span class="nx">A</span><span class="p">,</span>    
+    <span class="cm">/*Here creating the prototype object overrides the inherited prototype so constructor is made to point to A*/</span>
+    <span class="nx">b</span> <span class="o">:</span> <span class="s2">"Hi! "</span><span class="p">,</span>
+    <span class="nx">c</span> <span class="o">:</span> <span class="s2">"Bye!"</span><span class="p">,</span>
+    <span class="nx">d</span> <span class="o">:</span> <span class="p">[</span><span class="s2">"Hi"</span><span class="p">,</span><span class="s2">"there!"</span><span class="p">],</span>
+    <span class="nx">show</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">b</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">c</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">z</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+<span class="nx">x</span><span class="p">.</span><span class="nx">d</span><span class="p">;</span>                  <span class="c1">//before change: ["Hi","there!"]</span>
+<span class="nx">z</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>             
+<span class="nx">z</span><span class="p">.</span><span class="nx">d</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">"Soumen"</span><span class="p">);</span> 
+<span class="nx">x</span><span class="p">.</span><span class="nx">d</span><span class="p">;</span>                  <span class="c1">//after change: ["Hi","there!","Soumen"]</span>
+
+</pre></div>
+
+<h3>
+<a name="disadvantage-2" class="anchor" href="#disadvantage-2"><span class="octicon octicon-link"></span></a>Disadvantage:</h3>
+
+<p>Here since prototype is used everything in A is shared among its instances. So changing array <strong>d</strong> through <strong>z</strong> causes <strong>d</strong> to change for all instances. This can be overcomed by using both constructor pattern for individual properties as well as prototype pattern for methods.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-43253811-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
