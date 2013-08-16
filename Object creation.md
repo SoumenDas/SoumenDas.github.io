@@ -1,6 +1,6 @@
 # Object Creation
 
-### Factory function:
+### Factory Pattern:
 ``` javascript
 function a(){
     var obj = {
@@ -24,16 +24,26 @@ z instanceof obj;
 //The problem now is we can't tell which specific object z belongs to.
 ```  
 ###Disadvantage:  
-It becomes difficult to query for the origin specific object. This can be overcomed by Constructor function  
-###Constructor function:
+It becomes difficult to query for the origin specific object. This can be overcomed by Constructor Pattern  
+###Constructor Pattern:
 ``` javascript  
 function A(){
 	this.b = "Hi! ";
     this.c = "Bye!";
+    this.show = function(){
+    	console.log(z.b,z.c);
+	};
 };
 
 var z = new A();
-console.log(z.b, z.c); 
-    
-```
+z.show();
+z instanceof A;           //true
+z instanceof Object;      //true
+A instanceof Object;      //true
+
+var x = new A();
+x.show();
+```  
+###Disadvantage:
+Here z and x both have their own copy of show() method i.e. it is not shared hence takes up memory. This can be overcomed by Prototype Pattern.
 
