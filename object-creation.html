@@ -1,0 +1,48 @@
+<h1 id="object-creation">Object Creation</h1>
+<h3 id="factory-pattern">Factory Pattern:</h3>
+<pre><code class="javascript">function a(){
+    var obj = {
+        b : &quot;Hi! &quot;,
+        c : &quot;Bye!&quot;
+    };
+    return obj;
+}
+
+var z = a();                             //i.e z = obj
+console.log(z.b, z.c);                   // Hi! Bye!
+
+z.constructor === Object;                // true
+z instanceof Object;                     // obvious: every object is instance of Object
+
+z.constructor === obj;
+//ReferenceError: 'obj' is undefined because its defined inside 'a'  
+
+z instanceof obj;                         
+// ReferenceError: 'obj' is undefined because its defined inside 'a'
+//The problem now is we can't tell which specific object z belongs to.
+</code></pre>
+
+<h3 id="disadvantage">Disadvantage:</h3>
+<p>It becomes difficult to query for the origin specific object. This can be overcomed by Constructor Pattern<br />
+</p>
+<h3 id="constructor-pattern">Constructor Pattern:</h3>
+<pre><code class="javascript">function A(){
+    this.b = &quot;Hi! &quot;;
+    this.c = &quot;Bye!&quot;;
+    this.show = function(){
+        console.log(z.b,z.c);
+    };
+};
+
+var z = new A();
+z.show();
+z instanceof A;           //true
+z instanceof Object;      //true
+A instanceof Object;      //true
+
+var x = new A();
+x.show();
+</code></pre>
+
+<h3 id="disadvantage_1">Disadvantage:</h3>
+<p>Here z and x both have their own copy of show() method i.e. it is not shared hence takes up memory. This can be overcomed by Prototype Pattern.</p>
